@@ -3,10 +3,11 @@
    express = require('express'),
      short = require('short'),
        app = express.createServer(),
-      port = process.env.PORT || 80;
+      port = process.env.PORT || 8080;
 
 //mongoose.connect("mongodb://localhost/short");
-mongoose.connect("mongodb://viscanti:january@staff.mongohq.com:10001/shorturl")
+mongoose.connect("mongodb://viscanti:january@dbh46.mongolab.com:27467/thinkrothtest")
+
 
 // TODO: Add basic auth here
 
