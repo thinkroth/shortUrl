@@ -3,7 +3,7 @@
    express = require('express'),
      short = require('short'),
        app = express.createServer(),
-      port = process.env.PORT || 8080;
+      port = process.env.PORT || 80;
 
 //mongoose.connect("mongodb://localhost/short");
 mongoose.connect("mongodb://viscanti:january@dbh46.mongolab.com:27467/thinkrothtest")
