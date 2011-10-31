@@ -1,0 +1,15 @@
+{
+    "author": "Kevin M Roth",
+    "name": "shortUrl",
+    "description": "Generate, retrieve short urls over mongoose/mongodb/express",
+    "version": "0.0.1",
+    "main": "./index",
+    "engines": {
+      "node": "v0.4.11"
+    },
+    "dependencies": {
+      "mongoose":"2.2.3",
+      "base-converter":"1.1.1",
+      "express":"2.4.5"
+    }
+}
