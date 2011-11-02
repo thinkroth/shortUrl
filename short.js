@@ -25,7 +25,7 @@ app.get('/api/*', function(req, res){
                if (error) {
                    console.error(error);
                } else {
-                    var URL = shortURLObject[0].URL
+                    var URL = shortURLObject[0].URL;
                     var hash = shortURLObject[0].hash;
 					var tiny_url = "http://127.0.0.1:" + port + "/" + hash;
 					console.log("URL is " + URL + " " + tiny_url);	
