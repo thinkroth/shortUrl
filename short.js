@@ -1,12 +1,11 @@
    var url = require('url'),
   mongoose = require('mongoose'),
    express = require('express'),
-     short = require('short'),
+     short = require('./short/lib/short'),
        app = express.createServer(),
-      port = process.env.PORT || 80;
+      port = process.env.PORT || 8080;
 
-//mongoose.connect("mongodb://localhost/short");
-mongoose.connect("mongodb://viscanti:january@dbh46.mongolab.com:27467/thinkrothtest")
+mongoose.connect("mongodb://localhost/short");
 
 
 // TODO: Add basic auth here
@@ -29,8 +28,8 @@ app.get('/api/*', function(req, res){
                     var URL = shortURLObject[0].URL
                     var hash = shortURLObject[0].hash;
 					var tiny_url = "http://127.0.0.1:" + port + "/" + hash;
-                    console.log(URL + " " + tiny_url);	
-		  					res.end("http://127.0.0.1:" + port + "/" + hash);
+					console.log("URL is " + URL + " " + tiny_url);	
+		  					res.end(tiny_url);
                };
            });
        }

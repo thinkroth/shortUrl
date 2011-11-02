@@ -6,7 +6,8 @@ var base = require("base-converter");
 var ShortURL = require(__dirname + "/../models/ShortURL.js");
 
 function hesher(URL) {
-	var id = Math.floor(Math.random() * (100000 - 9999999 + 1) + 9999999);
+	//Generates a 3 to 7 digit number
+	var id = Math.floor(Math.random()*3500000000)+3845
 	var hash = base.decTo62(id);
 	return hash;
 };
@@ -15,11 +16,11 @@ var short = function(){};
 
 // if it exists, use pre-existing
 short.gen = function(URL, callback) {
-	console.log("short.gen");
 	var hashedURL = hesher(URL);
 	ShortURL.checkExists(hashedURL, function(error, shortenedURLs) {
-		console.log("shortenedURLS", shortenedURLs);
-		if (error) {
+		if (shortenedURLs.length > 0){
+			console.log("THAT HASH EXISTS!!!! RETRYING!!!");
+		} if (error) {
 			callback(error, null);
 		} else {
 			if (shortenedURLs.length === 0) {

@@ -13,10 +13,8 @@ var ObjectId = Schema.ObjectId;
 var shortURL_schema = {
 	id          : ObjectId,
 	URL        	: String,
-	hash        : { type : String },
+	hash        : { type : String, index: true },
 	hits        : { type : Number, default: 0 },
-	uniques     : { type : Number, default: 0 },
-	visitors    : { type : [String], default: 0 },
 	created_at  : { type : Date, default: Date.now }
 };
 

@@ -8,7 +8,7 @@
       "node": "v0.4.11"
     },
     "dependencies": {
-      "mongoose":"2.2.3",
+      "mongoose":"2.3.8",
       "base-converter":"1.1.1",
       "express":"2.4.5"
     }

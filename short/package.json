@@ -1,7 +1,7 @@
 {
     "author": "Edward Hotchkiss <e@ingk.com>",
     "name": "short",
-    "description": "Generate, retieve short urls over mongoose/mongodb/express",
+    "description": "Generate, retrieve short urls over mongoose/mongodb/express",
     "version": "0.1.1",
     "repository": {
       "type": "git",
