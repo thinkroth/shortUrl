@@ -40,10 +40,8 @@ app.get('*', function(req, res) {
 	if (req.url === '/favicon.ico') {
 			return;
 		}
-	var hash = req.url.slice(1),	
-		ipAddress = req.connection.remoteAddress;
-		console.log(ipAddress + " viewed " + hash);
-		
+	var hash = req.url.slice(1);
+	
 		short.get(hash, function(error, shortURLObject) {
 			if (error) {
 				console.error(error);

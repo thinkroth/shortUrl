@@ -16,7 +16,8 @@ var short = function(){};
 
 // if it exists, use pre-existing
 short.gen = function(URL, callback) {
-	var hashedURL = hesher(URL);
+	var hashedURL = hesher(URL),
+	URL = 'http://' + URL;
 	ShortURL.checkExists(hashedURL, function(error, shortenedURLs) {
 		if (shortenedURLs.length > 0){
 			console.log("THAT HASH EXISTS!!!! RETRYING!!!");
@@ -24,6 +25,7 @@ short.gen = function(URL, callback) {
 			callback(error, null);
 		} else {
 			if (shortenedURLs.length === 0) {
+				console.log(URL);
 				var item = new ShortURL({
 					URL : URL,
 					hash : hashedURL

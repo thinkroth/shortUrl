@@ -14,7 +14,7 @@ var shortURL_schema = {
 	id          : ObjectId,
 	URL        	: String,
 	hash        : { type : String, index: true },
-	hits        : { type : Number, default: 0 },
+	hits        : { type : Number, default: -1 },
 	created_at  : { type : Date, default: Date.now }
 };
 
