@@ -1,4 +1,3 @@
-
 shortUrl
 =====
 
@@ -12,5 +11,5 @@ $ npm install
 ***Basic API Usage***
 
 ```bash
-Curl localhost:8080/api/www.longdomain.com
+$ Curl localhost:8080/api/www.longdomain.com
 ```
