@@ -1,14 +1,11 @@
    var url = require('url'),
   mongoose = require('mongoose'),
    express = require('express'),
-     short = require('./short/lib/short'),
+     short = require('./short/'),
        app = express.createServer(),
       port = process.env.PORT || 8080;
 
 mongoose.connect("mongodb://localhost/short");
-
-
-// TODO: Add basic auth here
 
 app.get('/api/*', function (req, res) {
 	if (req.url === '/favicon.ico') {
