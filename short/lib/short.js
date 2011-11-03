@@ -25,7 +25,6 @@ short.gen = function(URL, callback) {
 			callback(error, null);
 		} else {
 			if (shortenedURLs.length === 0) {
-				console.log(URL);
 				var item = new ShortURL({
 					URL : URL,
 					hash : hashedURL

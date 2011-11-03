@@ -14,7 +14,7 @@ var shortURL_schema = {
 	id          : ObjectId,
 	URL        	: String,
 	hash        : { type : String, index: true },
-	hits        : { type : Number, default: -1 },
+	hits        : { type : Number, default: 0 },
 	created_at  : { type : Date, default: Date.now }
 };
 
@@ -46,7 +46,7 @@ ShortURL.findByHash = function(hash, callback) {
 					if (error) {
 						callback(error, null);
 					} else {
-						callback(null, URL);
+						callback(null, URL);		
 					};
 				});
 			} else {
