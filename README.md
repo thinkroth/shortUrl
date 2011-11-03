@@ -13,6 +13,8 @@ $ npm install
 ```
 ***Basic API Usage***
 
+Just add the domain you'd like to the end of localhost:8080/api
+
 ```bash
 $ curl localhost:8080/api/www.longdomain.com
 ```
