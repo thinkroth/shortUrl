@@ -1,7 +1,7 @@
    var url = require('url'),
   mongoose = require('mongoose'),
    express = require('express'),
-     short = require('./short/'),
+     short = require('short'),
        app = express.createServer(),
       port = process.env.PORT || 8080;
 
