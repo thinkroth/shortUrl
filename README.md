@@ -1,15 +1,14 @@
 
 # ShortURL
 
-### Node.js Tiny URL generator with analytics
+**Node.js Tiny URL generator with analytics**
 
-### Based on https://github.com/edwardhotchkiss/short
+***Based on https://github.com/edwardhotchkiss/short/***
 
 ### Setup
 
-Download files, cd to downloaded folder and run:
-
 ```bash
+$ git clone https://github.com/thinkroth/shortUrl.git
 $ npm install
 ```
 ### Basic API Usage
