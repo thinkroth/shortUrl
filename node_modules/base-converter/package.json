@@ -1,13 +1,13 @@
 {
   "name": "base-converter",
   "description": "Simple math tool for base convertion : decimal from/to any base",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "author": "Nicolas Chambrier <naholyr@gmail.com> (http://naholyr.fr)",
   "directories": {
     "lib": "."
   },
   "engines": {
-    "node": "*"
+    "node": ">= 0.4"
   },
   "dependencies": {},
   "devDependencies": {},
