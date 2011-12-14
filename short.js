@@ -18,10 +18,9 @@ app.get('/api/*', function (req, res) {
       console.error(error);
     } 
     else {
-      var mainUrl = shortURL.URL,
-          hash = shortURL.hash,
-          tinyUrl = "http://127.0.0.1:" + port + "/" + hash;
-      console.log("URL is " + mainURL + " " + tinyUrl);
+      // console.log(shortURL);
+      var tinyUrl = "http://127.0.0.1:" + port + "/" + shortURL.hash;
+      console.log("URL is " + shortURL.URL + " " + tinyUrl);
       res.end(tinyUrl);
     }
   });
