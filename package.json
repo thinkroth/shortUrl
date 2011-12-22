@@ -8,7 +8,7 @@
     "node": ">= v0.4.12 < 0.7.0"
   },
   "dependencies": {
-    "express":"",
-    "short":"0.2.3"
+    "express":"2.5.2",
+    "short":"0.4.0"
   }
 }
