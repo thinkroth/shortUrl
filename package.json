@@ -9,6 +9,6 @@
   },
   "dependencies": {
     "express":"2.5.2",
-    "short":"0.4.0"
+    "short":"1.0"
   }
 }
