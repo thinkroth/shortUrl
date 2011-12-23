@@ -36,7 +36,7 @@ app.get('*', function (req, res) {
     }
     else {
       if (shortURLObject) {
-        res.redirect(shortURLObject.URL);
+        res.redirect(shortURLObject.URL, 302);
       }
       else {
         res.send('URL not found!', 404);
