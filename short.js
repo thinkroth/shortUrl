@@ -3,7 +3,8 @@ var url = require('url'),
     express = require('express'),
     short = require('short'),
     app = express.createServer(),
-    port = process.env.PORT || 8080;
+    port = process.env.PORT || 8080,
+    domain = "http://192.168.1.111";
 
 short.connect("mongodb://localhost/short");
 
@@ -13,15 +14,14 @@ app.get('/api/*', function (req, res) {
   }
   var removeApi = req.url.slice(5),
       URL = removeApi,
-      options = {length: 5};
+      options = {length: 7};
   short.generate(URL, options, function (error, shortURL) {
     if (error) {
       console.error(error);
     }
     else {
-      // console.log(shortURL);
-      var tinyUrl = "http://127.0.0.1:" + port + "/" + shortURL.hash;
-      console.log("URL is " + shortURL.URL + " " + tinyUrl);
+      var tinyUrl = [domain, ":", port, "/", shortURL.hash].join("");
+      console.log(["URL is ", shortURL.URL, " ", tinyUrl].join(""));
       res.end(tinyUrl);
     }
   });
