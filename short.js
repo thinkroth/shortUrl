@@ -30,11 +30,12 @@ app.get('*', function (req, res) {
   if (req.url === '/favicon.ico') {
     return;
   }
-  var hash = req.url.slice(1);
-  short.retrieve(hash, function (error, shortURLObject) {
+  var visitor = req.connection.remoteAddress,
+      hash = req.url.slice(1),
+      options = {visitor: visitor};
+  short.retrieve(hash, options, function (error, shortURLObject) {
     if (error) {console.error(error);
-    }
-    else {
+    } else {
       if (shortURLObject) {
         res.redirect(shortURLObject.URL, 302);
       }
