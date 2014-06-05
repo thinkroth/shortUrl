@@ -1,7 +1,7 @@
 var url = require('url'),
     express = require('express'),
     short = require('short'),
-    app = express.createServer(),
+    app = express(),
     port = process.env.PORT || 8080,
     domain = "http://192.168.1.111";
 
@@ -14,15 +14,13 @@ app.get('/api/*', function (req, res) {
   var removeApi = req.url.slice(5),
       URL = removeApi,
       options = {length: 7};
-  short.generate(URL, options, function (error, shortURL) {
-    if (error) {
-      console.error(error);
-    }
-    else {
-      var tinyUrl = [domain, ":", port, "/", shortURL.hash].join("");
-      console.log(["URL is ", shortURL.URL, " ", tinyUrl].join(""));
-      res.end(tinyUrl);
-    }
+  short.generate({URL: URL}, options).then(function (shortURL) {
+    var tinyUrl = [domain, ":", port, "/", shortURL.hash].join("");
+    console.log(["URL is ", shortURL.URL, " ", tinyUrl].join(""));
+    res.send(tinyUrl);
+  }, function (error) {
+    console.error(error.message);
+    res.send(500, 'Internal server error');
   });
 });
 
@@ -33,16 +31,18 @@ app.get('*', function (req, res) {
   var visitor = req.connection.remoteAddress,
       hash = req.url.slice(1),
       options = {visitor: visitor};
-  short.retrieve(hash, options, function (error, shortURLObject) {
-    if (error) {console.error(error);
+  short.retrieve(hash, options).then(function (shortURLObject) {
+    if (shortURLObject) {
+      res.redirect(302, shortURLObject.URL);
     } else {
-      if (shortURLObject) {
-        res.redirect(shortURLObject.URL, 302);
-      }
-      else {
-        res.send('URL not found!', 404);
-        res.end();
-      }
+      res.send(404, 'URL not found!');
+    }
+  }, function (error) {
+    console.error(error.message);
+    if (error instanceof Error && error.message.indexOf('Cannot find Document') !== -1) {
+      res.send(404, 'URL not found');
+    } else {
+      res.send(500, 'Internal server error');
     }
   });
 });
