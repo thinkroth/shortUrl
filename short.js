@@ -3,9 +3,10 @@ var url = require('url'),
     short = require('short'),
     app = express(),
     port = process.env.PORT || 8080,
-    domain = "http://192.168.1.111";
+    domain = process.env.DOMAIN || ("http://localhost:" + port);
+    mongo = process.env.MONGODB || "mongodb://localhost/short";
 
-short.connect("mongodb://localhost/short");
+short.connect(mongo);
 
 app.get('/api/*', function (req, res) {
   if (req.url === '/favicon.ico') {
@@ -15,7 +16,7 @@ app.get('/api/*', function (req, res) {
       URL = removeApi,
       options = {length: 7};
   short.generate({URL: URL}, options).then(function (shortURL) {
-    var tinyUrl = [domain, ":", port, "/", shortURL.hash].join("");
+    var tinyUrl = [domain, "/", shortURL.hash].join("");
     console.log(["URL is ", shortURL.URL, " ", tinyUrl].join(""));
     res.send(tinyUrl);
   }, function (error) {
