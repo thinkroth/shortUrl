@@ -7,6 +7,9 @@ var url = require('url'),
     mongo = process.env.MONGODB || "mongodb://localhost/short";
 
 short.connect(mongo);
+short.connection.on('error', function(error) {
+  throw new Error(error);
+});
 
 app.get('/api/*', function (req, res) {
   if (req.url === '/favicon.ico') {
